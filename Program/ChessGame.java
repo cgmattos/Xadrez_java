@@ -1,8 +1,10 @@
 package Program;
+import Tabuleiro.Posicao;
 
 public class ChessGame {
     public static void main(String[] args) {
-        System.out.println("teste");
+        Posicao pos = new Posicao(8, 8);
+        System.out.println(pos);
     }
     
 }
