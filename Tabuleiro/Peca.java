@@ -1,6 +1,5 @@
 package Tabuleiro;
-import Tabuleiro.Posicao;
-import Tabuleiro.Tabuleiro;
+import Tabuleiro.*;
 
 public class Peca {
     

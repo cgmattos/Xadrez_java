@@ -1,10 +1,12 @@
 package Program;
-import Tabuleiro.Posicao;
+
+import Tabuleiro.*;
+import Jogo.*;
 
 public class ChessGame {
     public static void main(String[] args) {
-        Posicao pos = new Posicao(8, 8);
-        System.out.println(pos);
+        Partida partida = new Partida();
+        UI.printTabuleiro(partida.getPecas());
     }
     
 }
