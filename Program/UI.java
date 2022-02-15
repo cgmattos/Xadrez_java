@@ -24,7 +24,7 @@ public class UI {
             System.out.println();
         }
         System.out.println("    -----------------");
-        System.out.println("  a b c d e f g h");
+        System.out.println("     a b c d e f g h");
     }
 
     private static void printPeca(PecaXadrez peca){

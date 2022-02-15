@@ -25,6 +25,10 @@ public class Partida {
         tabuleiro.colocarPeca(peca, new PosicaoXadrez(linha, coluna).converterPosicao());
     }
 
+    public void removerPeca(char coluna, int linha){
+        tabuleiro.removerPeca(new PosicaoXadrez(linha, coluna).converterPosicao());
+    }
+
     private void iniciarPartida(){
         colocarNovaPeca('d', 8, new Rei(tabuleiro, Cor.PRETO));
         colocarNovaPeca('e', 1, new Rei(tabuleiro, Cor.BRANCO));
