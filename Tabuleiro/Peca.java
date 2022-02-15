@@ -1,5 +1,4 @@
 package Tabuleiro;
-import Tabuleiro.*;
 
 public class Peca {
     

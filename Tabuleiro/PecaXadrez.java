@@ -1,5 +1,5 @@
 package Tabuleiro;
-import Tabuleiro.*;
+
 import Jogo.*;
 
 public class PecaXadrez extends Peca {

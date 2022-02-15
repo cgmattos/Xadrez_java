@@ -1,6 +1,5 @@
 package Jogo;
 
-import Jogo.*;
 import Tabuleiro.PecaXadrez;
 import Tabuleiro.Tabuleiro;
 

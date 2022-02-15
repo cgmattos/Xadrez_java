@@ -1,7 +1,5 @@
 package Tabuleiro;
 
-import Tabuleiro.*;
-
 public class Tabuleiro {
     
     private int linha;

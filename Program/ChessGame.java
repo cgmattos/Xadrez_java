@@ -1,6 +1,5 @@
 package Program;
 
-import Tabuleiro.*;
 import Jogo.*;
 
 public class ChessGame {
