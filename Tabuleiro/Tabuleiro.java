@@ -1,5 +1,6 @@
 package Tabuleiro;
-import Tabuleiro.Peca;
+
+import Tabuleiro.*;
 
 public class Tabuleiro {
     
@@ -8,6 +9,9 @@ public class Tabuleiro {
     private Peca[][] pecas;
 
     public Tabuleiro(int linhas, int colunas){
+        if (linhas < 1 || colunas < 0){
+            throw new TabuleiroException("O tabuleiro precisa de pelo menos uma linha e coluna");
+        }
         this.linha = linhas;
         this.coluna = colunas;
         pecas = new Peca[linhas][colunas];
@@ -21,15 +25,10 @@ public class Tabuleiro {
         return this.coluna;
     }
 
-    public void setLinha(int linha){
-        this.linha = linha;
-    }
-
-    public void setColuna(int coluna){
-        this.coluna = coluna;
-    }
-
     public Peca peca(int linha, int coluna){
+        if (!posicaoExiste(linha, coluna)){
+            throw new TabuleiroException("Posição fora do tabuleiro.");
+        }
         return pecas[linha][coluna];
     }
 
@@ -40,5 +39,27 @@ public class Tabuleiro {
     public void colocarPeca(Peca peca, Posicao posicao){
         pecas[posicao.getLinha()][posicao.getColuna()] = peca;
         peca.posicao = posicao;
+    }
+
+    private boolean posicaoExiste(int linha, int coluna){
+        if (linha >=0 && linha < this.linha && coluna >=0 && coluna < this.coluna){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean posicaoExiste(Posicao posicao){
+        return posicaoExiste(posicao.getLinha(), posicao.getColuna());
+    }
+
+    public boolean temPeca(Posicao posicao){
+        if (this.pecas[posicao.getLinha()][posicao.getColuna()] == null){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 }

@@ -43,6 +43,12 @@ public class Partida {
         tabuleiro.colocarPeca(new Bispo(tabuleiro, Cor.BRANCO), new Posicao(7, 5));
         tabuleiro.colocarPeca(new Bispo(tabuleiro, Cor.BRANCO), new Posicao(7, 2));
 
+        for(int peca = 0; peca < tabuleiro.getColuna(); peca++){
+            tabuleiro.colocarPeca(new Peao(tabuleiro, Cor.PRETO), new Posicao(1, peca));
+            tabuleiro.colocarPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(6, peca));
+
+        }
+
         
     }
 }
