@@ -13,4 +13,9 @@ public class Peca {
     protected Tabuleiro getTabuleiro(){
         return this.tabuleiro;
     }
+
+    @Override
+    public String toString(){
+        return "tabuleiro: "+this.tabuleiro+" Posição "+this.posicao;
+    }
 }

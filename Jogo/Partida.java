@@ -21,6 +21,27 @@ public class Partida {
         return aux;
     }
 
+    public PecaXadrez moverPeca(PosicaoXadrez posicaoAtual, PosicaoXadrez posicaoFutura){
+        Posicao posAtual = posicaoAtual.converterPosicao();
+        Posicao posFutura = posicaoFutura.converterPosicao();
+        validarPosicaoAtual(posAtual);
+        Peca pecaCapturada = fazerMovimento(posAtual, posFutura);
+        return (PecaXadrez)pecaCapturada;
+    }
+
+    private Peca fazerMovimento(Posicao posicaoAtual, Posicao posicaoFutura){
+        Peca p = tabuleiro.removerPeca(posicaoAtual);
+        Peca capturada = tabuleiro.removerPeca(posicaoFutura);
+        tabuleiro.colocarPeca(p, posicaoFutura);
+        return capturada;
+    }
+
+    private void validarPosicaoAtual(Posicao posicao){
+        if(!tabuleiro.temPeca(posicao)){
+            throw new XadrezException("Não há uma peça nessa posição");
+        }
+    }
+    
     private void colocarNovaPeca(char coluna, int linha, PecaXadrez peca){
         tabuleiro.colocarPeca(peca, new PosicaoXadrez(linha, coluna).converterPosicao());
     }

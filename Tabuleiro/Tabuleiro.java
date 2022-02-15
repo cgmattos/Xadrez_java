@@ -49,12 +49,13 @@ public class Tabuleiro {
         if(!posicaoExiste(posicao)){
             throw new TabuleiroException("Não existe a posição no tabuleiro");
         }
-        else if (peca(posicao) == null) {
+        if (peca(posicao) == null) {
             return null;
         }
         Peca aux = peca(posicao);
         aux.posicao = null;
-        return pecas[posicao.getLinha()][posicao.getColuna()] = null;
+        pecas[posicao.getLinha()][posicao.getColuna()] = null;
+        return aux;
     }
 
     private boolean posicaoExiste(int linha, int coluna){

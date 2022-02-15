@@ -1,6 +1,10 @@
 package Program;
 
+import Jogo.PosicaoXadrez;
 import Tabuleiro.PecaXadrez;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class UI {
 
@@ -36,4 +40,16 @@ public class UI {
         }
         System.out.print(" ");
     }
+
+    public static PosicaoXadrez lerPosicaoXadrez(Scanner sc){
+        try {
+            String pos = sc.next();
+            char coluna = pos.charAt(0);
+            int linha = Integer.parseInt(pos.substring(1));
+            return new PosicaoXadrez(linha, coluna);
+        }
+        catch(RuntimeException e){
+            throw new InputMismatchException("Entrada de dados incorreta. Favor digitar no formato correto. ex: a1");
+        }
+    } 
 }
