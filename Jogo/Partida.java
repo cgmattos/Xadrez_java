@@ -21,6 +21,12 @@ public class Partida {
         return aux;
     }
 
+    public boolean[][] movimentosPossiveis(PosicaoXadrez posOrigem){
+        Posicao posicao = posOrigem.converterPosicao();
+        validarPosicaoAtual(posicao);
+        return tabuleiro.peca(posicao).movimentosPossiveis();
+    }
+
     public PecaXadrez moverPeca(PosicaoXadrez posicaoAtual, PosicaoXadrez posicaoFutura){
         Posicao posAtual = posicaoAtual.converterPosicao();
         Posicao posFutura = posicaoFutura.converterPosicao();
@@ -82,12 +88,10 @@ public class Partida {
         colocarNovaPeca('f', 1, new Bispo(tabuleiro, Cor.BRANCO));
         colocarNovaPeca('c', 1, new Bispo(tabuleiro, Cor.BRANCO));
 
-        for(int peca = 0; peca < tabuleiro.getColuna(); peca++){
+        /*for(int peca = 0; peca < tabuleiro.getColuna(); peca++){
             tabuleiro.colocarPeca(new Peao(tabuleiro, Cor.PRETO), new Posicao(1, peca));
             tabuleiro.colocarPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(6, peca));
-
-        }
-
-        
+        }*/
+ 
     }
 }

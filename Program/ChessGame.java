@@ -19,6 +19,10 @@ public class ChessGame {
                 System.out.println();
                 System.out.println("Posição da peça que será mexida:");
                 PosicaoXadrez pos = UI.lerPosicaoXadrez(sc);
+
+                boolean[][] movimentosPossiveis = partida.movimentosPossiveis(pos);
+                UI.limparTela();
+                UI.printTabuleiro(partida.getPecas(), movimentosPossiveis); 
                 
                 System.out.println("Posição para onde a peça será mexida:");
                 PosicaoXadrez posFutura = UI.lerPosicaoXadrez(sc);

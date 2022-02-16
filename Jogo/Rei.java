@@ -1,6 +1,8 @@
 package Jogo;
 
+import Tabuleiro.Peca;
 import Tabuleiro.PecaXadrez;
+import Tabuleiro.Posicao;
 import Tabuleiro.Tabuleiro;
 
 public class Rei extends PecaXadrez {
@@ -21,9 +23,56 @@ public class Rei extends PecaXadrez {
         }
     }
 
+    private boolean podeMover(Posicao posicao){
+        PecaXadrez p = (PecaXadrez)getTabuleiro().peca(posicao);
+        return p == null || p.getCor() != getCor();
+    }
+
     @Override
     public boolean[][] movimentosPossiveis() {
         boolean[][] matriz = new boolean[getTabuleiro().getLinha()][getTabuleiro().getColuna()];
+        Posicao p = new Posicao(0, 0);
+
+        p.setValores(posicao.getLinha()-1, posicao.getColuna());                    //Movimento para cima
+        if (getTabuleiro().posicaoExiste(p) && podeMover(p)){
+            matriz[p.getLinha()][p.getColuna()] = true;
+        }
+
+        p.setValores(posicao.getLinha()+1, posicao.getColuna());                    //Movimento para baixo
+        if (getTabuleiro().posicaoExiste(p) && podeMover(p)){
+            matriz[p.getLinha()][p.getColuna()] = true;
+        }
+
+        p.setValores(posicao.getLinha(), posicao.getColuna()-1);                    //Movimento para esquerda
+        if (getTabuleiro().posicaoExiste(p) && podeMover(p)){
+            matriz[p.getLinha()][p.getColuna()] = true;
+        }
+
+        p.setValores(posicao.getLinha(), posicao.getColuna()+1);                    //Movimento para direita
+        if (getTabuleiro().posicaoExiste(p) && podeMover(p)){
+            matriz[p.getLinha()][p.getColuna()] = true;
+        }
+
+        p.setValores(posicao.getLinha()-1, posicao.getColuna()+1);                    //Movimento diagonal superior direita
+        if (getTabuleiro().posicaoExiste(p) && podeMover(p)){
+            matriz[p.getLinha()][p.getColuna()] = true;
+        }
+
+        p.setValores(posicao.getLinha()-1, posicao.getColuna()-1);                    //Movimento diagonal superior esquerda
+        if (getTabuleiro().posicaoExiste(p) && podeMover(p)){
+            matriz[p.getLinha()][p.getColuna()] = true;
+        }
+
+        p.setValores(posicao.getLinha()+1, posicao.getColuna()-1);                    //Movimento diagonal inferior esquerda
+        if (getTabuleiro().posicaoExiste(p) && podeMover(p)){
+            matriz[p.getLinha()][p.getColuna()] = true;
+        }
+
+        p.setValores(posicao.getLinha()+1, posicao.getColuna()+1);                    //Movimento diagonal inferior esquerda
+        if (getTabuleiro().posicaoExiste(p) && podeMover(p)){
+            matriz[p.getLinha()][p.getColuna()] = true;
+        }
+
         return matriz;
     }
 }
