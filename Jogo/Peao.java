@@ -20,4 +20,10 @@ public class Peao extends PecaXadrez {
             return "P";
         }
     }
+
+    @Override
+    public boolean[][] movimentosPossiveis() {
+        boolean[][] matriz = new boolean[getTabuleiro().getLinha()][getTabuleiro().getColuna()];
+        return matriz;
+    }
 }

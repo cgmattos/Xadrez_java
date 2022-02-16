@@ -21,4 +21,11 @@ public class Rainha extends PecaXadrez {
                 return "D";
             }
         }
+
+    @Override
+    public boolean[][] movimentosPossiveis() {
+        boolean[][] matriz = new boolean[getTabuleiro().getLinha()][getTabuleiro().getColuna()];
+        return matriz;
     }
+
+}

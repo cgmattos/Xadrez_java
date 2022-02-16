@@ -52,4 +52,9 @@ public class UI {
             throw new InputMismatchException("Entrada de dados incorreta. Favor digitar no formato correto. ex: a1");
         }
     } 
+
+    public static void limparTela(){
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
 }
