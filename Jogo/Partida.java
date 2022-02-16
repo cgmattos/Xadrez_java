@@ -25,6 +25,7 @@ public class Partida {
         Posicao posAtual = posicaoAtual.converterPosicao();
         Posicao posFutura = posicaoFutura.converterPosicao();
         validarPosicaoAtual(posAtual);
+        validarPosicaoDestino(posAtual, posFutura);
         Peca pecaCapturada = fazerMovimento(posAtual, posFutura);
         return (PecaXadrez)pecaCapturada;
     }
