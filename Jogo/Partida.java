@@ -44,6 +44,12 @@ public class Partida {
             throw new XadrezException("A peça não possui movimentos possíveis");
         }
     }
+
+    private void validarPosicaoDestino(Posicao inicial, Posicao destino){
+        if(!tabuleiro.peca(inicial).possivelMovimento(destino)){
+            throw new XadrezException("A peça escolhida não pode se mover para a posição de destino");
+        }
+    }
     
     private void colocarNovaPeca(char coluna, int linha, PecaXadrez peca){
         tabuleiro.colocarPeca(peca, new PosicaoXadrez(linha, coluna).converterPosicao());
