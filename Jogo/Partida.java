@@ -40,7 +40,7 @@ public class Partida {
         if(!tabuleiro.temPeca(posicao)){
             throw new XadrezException("Não há uma peça nessa posição");
         }
-        if(!tabuleiro.posicaoExiste(posicao)){
+        if(!tabuleiro.peca(posicao).existeAlgumMovimento()){
             throw new XadrezException("A peça não possui movimentos possíveis");
         }
     }
