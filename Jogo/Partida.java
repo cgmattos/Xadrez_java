@@ -1,14 +1,38 @@
 package Jogo;
 
+import java.text.CollationElementIterator;
+
 import Tabuleiro.*;
 
 public class Partida {
     
     private Tabuleiro tabuleiro;
+    private int turno;
+    private Cor jogadorAtual;
 
     public Partida(){
+        this.turno = 1;
         this.tabuleiro = new Tabuleiro(8, 8);
+        this.jogadorAtual = Cor.BRANCO;
         iniciarPartida();
+    }
+
+    public int getTurno(){
+        return this.turno;
+    }
+
+    public Cor getJogadorAtual(){
+        return this.jogadorAtual;
+    }
+
+    private void proximoTurno(){
+        this.turno ++;
+        if (this.jogadorAtual == Cor.BRANCO){
+            this.jogadorAtual = Cor.PRETO;
+        }
+        else{
+            this.jogadorAtual = Cor.BRANCO;
+        }
     }
 
     public PecaXadrez[][] getPecas(){
@@ -33,6 +57,7 @@ public class Partida {
         validarPosicaoAtual(posAtual);
         validarPosicaoDestino(posAtual, posFutura);
         Peca pecaCapturada = fazerMovimento(posAtual, posFutura);
+        proximoTurno();
         return (PecaXadrez)pecaCapturada;
     }
 
@@ -46,6 +71,9 @@ public class Partida {
     private void validarPosicaoAtual(Posicao posicao){
         if(!tabuleiro.temPeca(posicao)){
             throw new XadrezException("Não há uma peça nessa posição");
+        }
+        if(jogadorAtual != ((PecaXadrez)tabuleiro.peca(posicao)).getCor()){
+            throw new XadrezException("O jogador está tentando mover uma peça que não o pertence");
         }
         if(!tabuleiro.peca(posicao).existeAlgumMovimento()){
             throw new XadrezException("A peça não possui movimentos possíveis");

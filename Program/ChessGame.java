@@ -15,7 +15,7 @@ public class ChessGame {
 
         while (true){
             try{
-                UI.printTabuleiro(partida.getPecas());
+                UI.printPartida(partida);
                 System.out.println();
                 System.out.println("Posição da peça que será mexida:");
                 PosicaoXadrez pos = UI.lerPosicaoXadrez(sc);

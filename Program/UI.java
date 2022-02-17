@@ -1,5 +1,6 @@
 package Program;
 
+import Jogo.Partida;
 import Jogo.PosicaoXadrez;
 import Tabuleiro.PecaXadrez;
 
@@ -18,6 +19,12 @@ public class UI {
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
+
+    public static void printPartida(Partida partida){
+        printTabuleiro(partida.getPecas());
+        System.out.println();
+        System.out.println("Turno: "+partida.getTurno()+" | "+"Jogador: "+partida.getJogadorAtual());
+    }
 
     public static void printTabuleiro(PecaXadrez[][] pecas){
         System.out.println("    -----------------");
@@ -55,9 +62,9 @@ public class UI {
             System.out.print("-"+ANSI_RESET);
         }
         else{
-            System.out.print(peca);
+            System.out.print(peca+ANSI_RESET);
         }
-        System.out.print(" ");
+        System.out.print(" "+ANSI_RESET);
     }
 
     public static PosicaoXadrez lerPosicaoXadrez(Scanner sc){
