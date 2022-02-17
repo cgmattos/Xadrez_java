@@ -1,13 +1,29 @@
 package Program;
 
+import Jogo.Cor;
 import Jogo.Partida;
 import Jogo.PosicaoXadrez;
+import Tabuleiro.Peca;
 import Tabuleiro.PecaXadrez;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class UI {
+
+    public static final String TEXT_RESET = "\u001B[0m";
+    public static final String TEXT_BLACK = "\u001B[30m";
+    public static final String TEXT_RED = "\u001B[31m";
+    public static final String TEXT_GREEN = "\u001B[32m";
+    public static final String TEXT_YELLOW = "\u001B[33m";
+    public static final String TEXT_BLUE = "\u001B[34m";
+    public static final String TEXT_PURPLE = "\u001B[35m";
+    public static final String TEXT_CYAN = "\u001B[36m";
+    public static final String TEXT_WHITE = "\u001B[37m";
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
@@ -20,8 +36,10 @@ public class UI {
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
 
-    public static void printPartida(Partida partida){
+    public static void printPartida(Partida partida, List<PecaXadrez> capturadas){
         printTabuleiro(partida.getPecas());
+        System.out.println();
+        printPecasCapturadas(capturadas);
         System.out.println();
         System.out.println("Turno: "+partida.getTurno()+" | "+"Jogador: "+partida.getJogadorAtual());
     }
@@ -82,5 +100,20 @@ public class UI {
     public static void limparTela(){
         System.out.print("\033[H\033[2J");
         System.out.flush();
+    }
+
+    private static void printPecasCapturadas(List<PecaXadrez> capturadas){
+        List<PecaXadrez> pretas = capturadas.stream().filter(x -> x.getCor() == Cor.PRETO).collect(Collectors.toList());
+        List<PecaXadrez> brancas = capturadas.stream().filter(x -> x.getCor() == Cor.BRANCO).collect(Collectors.toList());
+        System.out.println("Pecas capturadas: ");
+        System.out.print("Pretas: ");
+        System.out.println(TEXT_YELLOW);
+        System.out.print(Arrays.toString(pretas.toArray()));
+        System.out.println(TEXT_RESET);
+
+        System.out.print("Brancas: ");
+        System.out.println(TEXT_WHITE);
+        System.out.print(Arrays.toString(pretas.toArray()));
+        System.out.println(TEXT_RESET);
     }
 }

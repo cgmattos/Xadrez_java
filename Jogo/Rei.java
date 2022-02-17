@@ -1,6 +1,5 @@
 package Jogo;
 
-import Tabuleiro.Peca;
 import Tabuleiro.PecaXadrez;
 import Tabuleiro.Posicao;
 import Tabuleiro.Tabuleiro;

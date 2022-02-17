@@ -1,7 +1,5 @@
 package Jogo;
 
-import java.text.CollationElementIterator;
-
 import Tabuleiro.*;
 
 public class Partida {
