@@ -1,12 +1,18 @@
 package Jogo;
 
+import java.util.ArrayList;
 import Tabuleiro.*;
+import java.util.List;
 
 public class Partida {
     
     private Tabuleiro tabuleiro;
     private int turno;
     private Cor jogadorAtual;
+
+    private List<Peca> pecasNoTabuleiro = new ArrayList<>();
+    private List<Peca> pecasCapturadas = new ArrayList<>();
+
 
     public Partida(){
         this.turno = 1;
@@ -63,6 +69,12 @@ public class Partida {
         Peca p = tabuleiro.removerPeca(posicaoAtual);
         Peca capturada = tabuleiro.removerPeca(posicaoFutura);
         tabuleiro.colocarPeca(p, posicaoFutura);
+
+        if (capturada != null){
+            pecasNoTabuleiro.remove(capturada);
+            pecasCapturadas.add(capturada);
+        }
+
         return capturada;
     }
 
@@ -86,6 +98,7 @@ public class Partida {
     
     private void colocarNovaPeca(char coluna, int linha, PecaXadrez peca){
         tabuleiro.colocarPeca(peca, new PosicaoXadrez(linha, coluna).converterPosicao());
+        pecasNoTabuleiro.add(peca);
     }
 
     public void removerPeca(char coluna, int linha){
