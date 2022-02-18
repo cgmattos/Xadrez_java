@@ -27,8 +27,8 @@ public class PosicaoXadrez {
         return new Posicao(8-this.linha, this.coluna - 'a');
     }
 
-    protected static PosicaoXadrez converterPosicaoXadrez(Posicao posicao){
-        return new PosicaoXadrez(8 - posicao.getLinha(), (char)('a' - posicao.getColuna()));
+    public static PosicaoXadrez converterPosicaoXadrez(Posicao posicao){
+        return new PosicaoXadrez(8 - posicao.getLinha(), (char)('a' + posicao.getColuna()));
     }
 
     @Override

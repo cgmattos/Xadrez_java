@@ -41,6 +41,9 @@ public class UI {
         printPecasCapturadas(capturadas);
         System.out.println();
         System.out.println("Turno: "+partida.getTurno()+" | "+"Jogador: "+partida.getJogadorAtual());
+        if (partida.getCheck() == true){
+            System.out.println("Jogador, você está em CHECK.");
+        }
     }
 
     public static void printTabuleiro(PecaXadrez[][] pecas){
