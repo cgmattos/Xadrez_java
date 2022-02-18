@@ -16,7 +16,7 @@ public class ChessGame {
         Partida partida = new Partida();
         List<PecaXadrez> capturadas = new ArrayList<>();
 
-        while (true){
+        while (!partida.getCheckmate()){
             try{
                 UI.printPartida(partida, capturadas);
                 System.out.println();
@@ -45,7 +45,9 @@ public class ChessGame {
             }
             sc.nextLine();
             UI.limparTela();
-            
-        }   
+
+        }
+        UI.limparTela();
+        UI.printPartida(partida, capturadas);   
     }
 }

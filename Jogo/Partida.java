@@ -11,6 +11,7 @@ public class Partida {
     private int turno;
     private Cor jogadorAtual;
     private boolean check;
+    private boolean checkmate;
 
     private List<Peca> pecasNoTabuleiro = new ArrayList<>();
     private List<Peca> pecasCapturadas = new ArrayList<>();
@@ -25,6 +26,10 @@ public class Partida {
 
     public int getTurno(){
         return this.turno;
+    }
+
+    public boolean getCheckmate(){
+        return this.checkmate;
     }
 
     public Cor getJogadorAtual(){
@@ -80,7 +85,12 @@ public class Partida {
             this.check = false;
         }
 
-        proximoTurno();
+        if (testarCheckmate(oponente(jogadorAtual))){
+            checkmate =  true;
+        }
+        else{
+            proximoTurno();
+        }
         
         return (PecaXadrez)pecaCapturada;
     }
@@ -162,6 +172,32 @@ public class Partida {
 
     public void removerPeca(char coluna, int linha){
         tabuleiro.removerPeca(new PosicaoXadrez(linha, coluna).converterPosicao());
+    }
+
+    private boolean testarCheckmate(Cor cor){
+        if(!estadoDeCheck(cor)){
+            return false;
+        }
+        List<Peca> lista = pecasNoTabuleiro.stream().filter(x ->((PecaXadrez)x).getCor() == cor).collect(Collectors.toList());
+        for(Peca p:lista){
+            boolean[][] matriz = p.movimentosPossiveis();
+            for (int i = 0; i < matriz.length; i++){
+                for (int j = 0; j<matriz.length; j++){
+                    if (matriz[i][j]){
+                        Posicao origem = ((PecaXadrez)p).getPosicaoXadrez().converterPosicao();
+                        Posicao destino = new Posicao(i, j);
+                        Peca capturada = fazerMovimento(origem, destino);
+                        boolean var = estadoDeCheck(cor);
+                        desfazerMovimento(origem, destino, capturada);
+                        if (var == false){
+                            return false;
+                        }
+                    }
+                }
+            }
+            
+        }
+        return true;
     }
 
     private void iniciarPartida(){

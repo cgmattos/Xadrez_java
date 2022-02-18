@@ -3,7 +3,7 @@ package Program;
 import Jogo.Cor;
 import Jogo.Partida;
 import Jogo.PosicaoXadrez;
-import Tabuleiro.Peca;
+
 import Tabuleiro.PecaXadrez;
 
 import java.util.Arrays;
@@ -40,9 +40,15 @@ public class UI {
         System.out.println();
         printPecasCapturadas(capturadas);
         System.out.println();
-        System.out.println("Turno: "+partida.getTurno()+" | "+"Jogador: "+partida.getJogadorAtual());
-        if (partida.getCheck() == true){
-            System.out.println("Jogador, você está em CHECK.");
+        if (!partida.getCheckmate()){
+            System.out.println("Turno: "+partida.getTurno()+" | "+"Jogador: "+partida.getJogadorAtual());
+            if (partida.getCheck() == true){
+                System.out.println("Jogador, você está em CHECK.");
+            }
+        }
+        else{
+            System.out.println("CHEKCMATE!");
+            System.out.println("O "+partida.getJogadorAtual()+" foi o vencedor");
         }
     }
 
