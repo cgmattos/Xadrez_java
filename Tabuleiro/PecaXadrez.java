@@ -6,6 +6,7 @@ import Jogo.*;
 public abstract class PecaXadrez extends Peca {
 
     private Cor cor;
+    private int contador;
     
     public PecaXadrez(Tabuleiro tabuleiro, Cor cor){
         super(tabuleiro);
@@ -14,6 +15,18 @@ public abstract class PecaXadrez extends Peca {
 
     public Cor getCor(){
         return this.cor;
+    }
+
+    public int getContador(){
+        return this.contador;
+    }
+
+    public void aumentarContador(){
+        this.contador++;
+    }
+
+    public void diminuirContador(){
+        this.contador--;
     }
 
     public void setCor(Cor cor){
