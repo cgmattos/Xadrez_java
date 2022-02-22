@@ -224,10 +224,10 @@ public class Partida {
         colocarNovaPeca('f', 1, new Bispo(tabuleiro, Cor.BRANCO));
         colocarNovaPeca('c', 1, new Bispo(tabuleiro, Cor.BRANCO));
 
-        /*for(int peca = 0; peca < tabuleiro.getColuna(); peca++){
+        for(int peca = 0; peca < tabuleiro.getColuna(); peca++){
             tabuleiro.colocarPeca(new Peao(tabuleiro, Cor.PRETO), new Posicao(1, peca));
             tabuleiro.colocarPeca(new Peao(tabuleiro, Cor.BRANCO), new Posicao(6, peca));
-        }*/
+        }
  
     }
 }

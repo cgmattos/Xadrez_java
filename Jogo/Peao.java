@@ -1,6 +1,7 @@
 package Jogo;
 
 import Tabuleiro.PecaXadrez;
+import Tabuleiro.Posicao;
 import Tabuleiro.Tabuleiro;
 
 public class Peao extends PecaXadrez {
@@ -24,6 +25,52 @@ public class Peao extends PecaXadrez {
     @Override
     public boolean[][] movimentosPossiveis() {
         boolean[][] matriz = new boolean[getTabuleiro().getLinha()][getTabuleiro().getColuna()];
+
+        Posicao p = new Posicao(0, 0);
+
+        if(getCor() == Cor.BRANCO){
+            p.setValores(posicao.getLinha() - 1, posicao.getColuna());
+            if (getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p)){
+                matriz[p.getLinha()][p.getColuna()] = true;
+            }
+            p.setValores(posicao.getLinha() - 2, posicao.getColuna());
+            Posicao aux = new Posicao(posicao.getLinha() - 1, posicao.getColuna());
+            if (getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p) && getTabuleiro().posicaoExiste(aux) && !getTabuleiro().temPeca(aux) && getContador() == 0){
+                matriz[p.getLinha()][p.getColuna()] = true;
+            }
+        
+            p.setValores(posicao.getLinha() - 1, posicao.getColuna() - 1);
+            if (getTabuleiro().posicaoExiste(p) && existePecaOponente(p)){
+                matriz[p.getLinha()][p.getColuna()] = true;
+            }
+        
+            p.setValores(posicao.getLinha() - 1, posicao.getColuna() + 1);
+            if (getTabuleiro().posicaoExiste(p) && existePecaOponente(p)){
+                matriz[p.getLinha()][p.getColuna()] = true;
+            }
+        }
+        else{
+            p.setValores(posicao.getLinha() + 1, posicao.getColuna());
+            if (getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p)){
+                matriz[p.getLinha()][p.getColuna()] = true;
+            }
+            p.setValores(posicao.getLinha() + 2, posicao.getColuna());
+            Posicao aux = new Posicao(posicao.getLinha() + 1, posicao.getColuna());
+            if (getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p) && getTabuleiro().posicaoExiste(aux) && !getTabuleiro().temPeca(aux) && getContador() == 0){
+                matriz[p.getLinha()][p.getColuna()] = true;
+            }
+        
+            p.setValores(posicao.getLinha() + 1, posicao.getColuna() - 1);
+            if (getTabuleiro().posicaoExiste(p) && existePecaOponente(p)){
+                matriz[p.getLinha()][p.getColuna()] = true;
+            }
+        
+            p.setValores(posicao.getLinha() + 1, posicao.getColuna() + 1);
+            if (getTabuleiro().posicaoExiste(p) && existePecaOponente(p)){
+                matriz[p.getLinha()][p.getColuna()] = true;
+            }
+        }
+
         return matriz;
     }
 }
