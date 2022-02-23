@@ -1,6 +1,7 @@
 package Jogo;
 
 import Tabuleiro.PecaXadrez;
+import Tabuleiro.Posicao;
 import Tabuleiro.Tabuleiro;
 
 public class Cavalo extends PecaXadrez {
@@ -25,6 +26,58 @@ public class Cavalo extends PecaXadrez {
     @Override
     public boolean[][] movimentosPossiveis() {
         boolean[][] matriz = new boolean[getTabuleiro().getLinha()][getTabuleiro().getColuna()];
+
+        Posicao p = new Posicao(0,0);
+
+        p.setValores(posicao.getLinha()-2, posicao.getColuna()-1);                    
+        if (getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p)){
+            matriz[p.getLinha()][p.getColuna()] = true;
+            p.setValores(p.getLinha()-2, p.getColuna()-1);
+        }
+        
+        p.setValores(posicao.getLinha()-2, posicao.getColuna()+1);                    //Movimentos para baixo
+        if (getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p)){
+            matriz[p.getLinha()][p.getColuna()] = true;
+            p.setValores(p.getLinha()-2, p.getColuna()+1);
+        }
+
+        p.setValores(posicao.getLinha()+2, posicao.getColuna()+1);                    //Movimentos para baixo
+        if (getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p)){
+            matriz[p.getLinha()][p.getColuna()] = true;
+            p.setValores(p.getLinha()+2, p.getColuna()+1);
+        }
+
+        p.setValores(posicao.getLinha()+2, posicao.getColuna()-1);                    //Movimentos para baixo
+        if (getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p)){
+            matriz[p.getLinha()][p.getColuna()] = true;
+            p.setValores(p.getLinha()+2, p.getColuna()-1);
+        }
+
+        p.setValores(posicao.getLinha()-1, posicao.getColuna()-2);                    //Movimentos para baixo
+        if (getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p)){
+            matriz[p.getLinha()][p.getColuna()] = true;
+            p.setValores(p.getLinha()-1, p.getColuna()-2);
+        }
+
+        p.setValores(posicao.getLinha()-1, posicao.getColuna()+2);                    //Movimentos para baixo
+        if (getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p)){
+            matriz[p.getLinha()][p.getColuna()] = true;
+            p.setValores(p.getLinha()-1, p.getColuna()+2);
+        }
+
+        p.setValores(posicao.getLinha()+1, posicao.getColuna()+2);                    //Movimentos para baixo
+        if (getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p)){
+            matriz[p.getLinha()][p.getColuna()] = true;
+            p.setValores(p.getLinha()+1, p.getColuna()+2);
+        }
+
+        p.setValores(posicao.getLinha()+1, posicao.getColuna()-2);                    //Movimentos para baixo
+        if (getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p)){
+            matriz[p.getLinha()][p.getColuna()] = true;
+            p.setValores(p.getLinha()+1, p.getColuna()-2);
+        }
+
         return matriz;
+        
     }
 }
