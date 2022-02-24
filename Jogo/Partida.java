@@ -203,8 +203,8 @@ public class Partida {
     }
 
     private void iniciarPartida(){
-        colocarNovaPeca('d', 8, new Rei(tabuleiro, Cor.PRETO));
-        colocarNovaPeca('e', 1, new Rei(tabuleiro, Cor.BRANCO));
+        colocarNovaPeca('d', 8, new Rei(tabuleiro, Cor.PRETO, this));
+        colocarNovaPeca('e', 1, new Rei(tabuleiro, Cor.BRANCO, this));
 
         colocarNovaPeca('e', 8, new Rainha(tabuleiro, Cor.PRETO));
         colocarNovaPeca('d', 1, new Rainha(tabuleiro, Cor.BRANCO));
