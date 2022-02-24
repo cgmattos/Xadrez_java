@@ -31,12 +31,7 @@ public class Rei extends PecaXadrez {
 
     private boolean torreApta(Posicao pos){
         PecaXadrez p = (PecaXadrez)getTabuleiro().peca(pos);
-        if (p != null && p instanceof Torre && p.getCor() == this.getCor() && p.getContador() == 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return p != null && p instanceof Torre && p.getCor() == this.getCor() && p.getContador() == 0;
     }
 
     @Override
@@ -86,18 +81,18 @@ public class Rei extends PecaXadrez {
 
         if(getContador() == 0 && !partida.getCheck()){
             Posicao t1 = new Posicao(this.posicao.getLinha(), this.posicao.getColuna()+3);
-            if (torreApta(t1)){
+            if (getTabuleiro().posicaoExiste(t1) && torreApta(t1) == true){
                 Posicao p1 = new Posicao(this.posicao.getLinha(), this.posicao.getColuna()+1);
                 Posicao p2 = new Posicao(this.posicao.getLinha(), this.posicao.getColuna()+2);
                 if (this.getTabuleiro().peca(p1) == null && this.getTabuleiro().peca(p2) == null){
-                    matriz[this.posicao.getLinha()][this.posicao.getColuna()+3] = true;
+                    matriz[this.posicao.getLinha()][this.posicao.getColuna()+2] = true;
                 }
             }
         }
         
         if(getContador() == 0 && !partida.getCheck()){
-            Posicao t2 = new Posicao(this.posicao.getLinha(), this.posicao.getColuna()-4);
-            if (torreApta(t2)){
+            Posicao torre2 = new Posicao(this.posicao.getLinha(), this.posicao.getColuna()-4);
+            if (getTabuleiro().posicaoExiste(torre2) && torreApta(torre2) == true){
                 Posicao p1 = new Posicao(this.posicao.getLinha(), this.posicao.getColuna()-1);
                 Posicao p2 = new Posicao(this.posicao.getLinha(), this.posicao.getColuna()-2);
                 Posicao p3 = new Posicao(this.posicao.getLinha(), this.posicao.getColuna()-3);

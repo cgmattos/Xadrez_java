@@ -44,7 +44,6 @@ public class ChessGame {
                 sc.nextLine();
             }
             sc.nextLine();
-            UI.limparTela();
 
         }
         UI.limparTela();

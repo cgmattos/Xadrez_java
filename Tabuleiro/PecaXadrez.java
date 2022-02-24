@@ -39,7 +39,6 @@ public abstract class PecaXadrez extends Peca {
     }
 
     public PosicaoXadrez getPosicaoXadrez(){
-        System.out.println(this.posicao);
         return PosicaoXadrez.converterPosicaoXadrez(this.posicao);
     }
 }
