@@ -104,6 +104,23 @@ public class Partida {
             pecasNoTabuleiro.remove(capturada);
             pecasCapturadas.add(capturada);
         }
+
+        if(p instanceof Rei && posicaoFutura.getColuna() == posicaoAtual.getColuna()+2){
+            Posicao origemT = new Posicao(posicaoAtual.getLinha(), posicaoAtual.getColuna()+3);
+            Posicao futuraT = new Posicao(posicaoAtual.getLinha(), posicaoAtual.getColuna()+1);
+            PecaXadrez torre = (PecaXadrez)tabuleiro.removerPeca(origemT);
+            tabuleiro.colocarPeca(torre, futuraT);
+            torre.aumentarContador();
+        }
+
+        if(p instanceof Rei && posicaoFutura.getColuna() == posicaoAtual.getColuna()-2){
+            Posicao origemT = new Posicao(posicaoAtual.getLinha(), posicaoAtual.getColuna()-4);
+            Posicao futuraT = new Posicao(posicaoAtual.getLinha(), posicaoAtual.getColuna()-1);
+            PecaXadrez torre = (PecaXadrez)tabuleiro.removerPeca(origemT);
+            tabuleiro.colocarPeca(torre, futuraT);
+            torre.aumentarContador();
+        }
+
         return capturada;
     }
 
@@ -115,6 +132,22 @@ public class Partida {
             tabuleiro.colocarPeca(capturada, destino);
             pecasCapturadas.remove(capturada);
             pecasNoTabuleiro.add(capturada);
+        }
+
+        if(p instanceof Rei && destino.getColuna() == origem.getColuna()+2){
+            Posicao origemT = new Posicao(origem.getLinha(), origem.getColuna()+3);
+            Posicao futuraT = new Posicao(origem.getLinha(), origem.getColuna()+1);
+            PecaXadrez torre = (PecaXadrez)tabuleiro.removerPeca(futuraT);
+            tabuleiro.colocarPeca(torre, origemT);
+            torre.diminuirContador();
+        }
+
+        if(p instanceof Rei && destino.getColuna() == origem.getColuna()-2){
+            Posicao origemT = new Posicao(origem.getLinha(), origem.getColuna()-4);
+            Posicao futuraT = new Posicao(origem.getLinha(), origem.getColuna()-1);
+            PecaXadrez torre = (PecaXadrez)tabuleiro.removerPeca(futuraT);
+            tabuleiro.colocarPeca(torre, origemT);
+            torre.diminuirContador();
         }
     }
 
